@@ -32,8 +32,8 @@ public class TestMemberHandling extends TestCase{
         String tempMemID = "AE899";
         tempMem.setMemberID(tempMemID);
 
-        assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID.charAt(0)), "A");            //Ensure that first char in first name == first char of ID
-        assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID).charAt(1), "E");            //Ensure that first char in last name == second char of ID
+        assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID).charAt(0), 'A');            //Ensure that first char in first name == first char of ID
+        assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID).charAt(1), 'E');            //Ensure that first char in last name == second char of ID
         assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID).length(), 5);               //Ensure that length of ID is 5 chars long.
     }
 }

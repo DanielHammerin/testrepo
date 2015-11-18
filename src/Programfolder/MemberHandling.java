@@ -1,5 +1,6 @@
 package Programfolder;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -21,12 +22,39 @@ public class MemberHandling {
             temp = String.valueOf(newMember.getMemberFirstName().charAt(0)) +
                     String.valueOf(newMember.getMemberLastName().charAt(0)) +
                     Integer.toString(randInt.nextInt(900) + 100);
-            newMember.setMemberID(temp);
+            newMember.setMemberID(ensureUniqueID(newMember, temp));
             return true;
         }
         catch (Exception e) {
             System.out.println("Error.");
         }
         return false;
+    }
+
+    public String ensureUniqueID(Member mem, String s) {
+
+        try {
+            ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
+            if (memArr.isEmpty()) {
+                return s;
+            }
+            for (Member m : memArr) {
+                if (m.getMemberID().equals(mem.getMemberID())) {
+                    String newID;
+                    newID = String.valueOf(mem.getMemberFirstName().charAt(0)) +
+                            String.valueOf(mem.getMemberLastName().charAt(0)) +
+                            Integer.toString(randInt.nextInt(900) + 100);
+                    mem.setMemberID(newID);
+                    ensureUniqueID(mem, newID);
+                }
+                else {
+                    return s;
+                }
+            }
+        }
+        catch (Error e) {
+            System.out.println("Error.");
+        }
+        return s;
     }
 }
