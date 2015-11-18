@@ -35,9 +35,6 @@ public class MemberHandling {
 
         try {
             ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
-            if (memArr.isEmpty()) {
-                return s;
-            }
             for (Member m : memArr) {
                 if (m.getMemberID().equals(mem.getMemberID())) {
                     String newID;
