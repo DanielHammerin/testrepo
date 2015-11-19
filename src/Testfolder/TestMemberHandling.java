@@ -25,7 +25,27 @@ public class TestMemberHandling extends TestCase{
         assertTrue(memhandling.addMember(n1, n2));
     }
 
+    @Test
+    public void testChangeMemberReturnsTrue() throws Exception {
+        Member tempMem = new Member();
+        tempMem.setMemberFirstName("Swagrid");
+        tempMem.setMemberLastName("McLovin");
+        tempMem.setMemberID("SM666");
 
+        SQLDUMMY.saveMember(tempMem);               //Save member to dummy DB.
+
+        Member checkMem = new Member();
+        ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
+        for (Member m : memArr) {                   // Look through all saved members
+            if (m.equals(tempMem)) {                // If match, save to checkMem
+                checkMem = m;
+            }
+        }
+        assertTrue(tempMem.equals(checkMem));            // Make sure they are really equal.
+
+        assertTrue(memhandling.changeMember(tempMem));
+
+    }
 
     @Test
     public void testDeleteMemberReturnsTrue() throws Exception {
@@ -46,7 +66,7 @@ public class TestMemberHandling extends TestCase{
         }
         assertTrue(tempMem.equals(checkMem));            // Make sure they are really equal.
 
-        assertEquals(true, memhandling.deleteMember(tempMem));          // Assert deletion of member.
+        assertTrue(memhandling.deleteMember(tempMem));          // Assert deletion of member.
     }
 
     @Test
