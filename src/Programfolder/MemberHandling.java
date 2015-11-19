@@ -26,7 +26,28 @@ public class MemberHandling {
             return true;
         }
         catch (Exception e) {
-            System.out.println("Error.");
+            System.out.println("Error1.");
+        }
+        return false;
+    }
+
+    public boolean deleteMember(Member mem) {
+
+        try {
+            ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
+
+            for(Member m : memArr) {
+                if (m.equals(mem)) {
+                    SQLDUMMY.deleteMember(m);
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Error2.");
         }
         return false;
     }
@@ -50,8 +71,10 @@ public class MemberHandling {
             }
         }
         catch (Error e) {
-            System.out.println("Error.");
+            System.out.println("Error3.");
         }
         return s;
     }
+
+
 }

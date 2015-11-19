@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+
 
 /**
  * Created by Daniel on 2015-11-11.
@@ -40,7 +40,8 @@ public class TestMemberHandling extends TestCase{
     }
 
     @Test
-    public void testDeleteMember() {
+    public void testDeleteMember() throws Exception {
+
         Member tempMem = new Member();              //Create new member.
         tempMem.setMemberFirstName("Michael");
         tempMem.setMemberLastName("Jordan");
@@ -55,17 +56,8 @@ public class TestMemberHandling extends TestCase{
                 checkMem = m;
             }
         }
-        assertEquals(tempMem, checkMem);            // Make sure they are really equal.
+        assertTrue(tempMem.equals(checkMem));            // Make sure they are really equal.
 
-        memhandling.deleteMember(tempMem);          // Delete the member.
-
-        ArrayList<Member> updatedMemArr = SQLDUMMY.getAllMembers();          //Reload all saved members.
-        boolean recheck = false;
-        for (Member m :updatedMemArr) {             // Re check saved members to ensure it's gone.
-            if (m.equals(tempMem)) {                // If it persists, set recheck to true.
-                recheck = true;
-            }
-        }
-        assertFalse(recheck);                       //Assert that the deleted member is deleted through the boolean.
+        assertEquals(true, memhandling.deleteMember(tempMem));          // Assert deletion of member.
     }
 }

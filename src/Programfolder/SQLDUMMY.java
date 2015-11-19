@@ -13,4 +13,12 @@ public class SQLDUMMY {
     public static ArrayList<Member> getAllMembers() {
         return memberList;
     }
+
+    public static void saveMember(Member m) {
+        memberList.add(m);
+    }
+
+    public static void deleteMember(Member memIn) {
+        memberList.remove(memIn);
+    }
 }
