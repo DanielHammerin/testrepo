@@ -32,6 +32,16 @@ public class MemberHandling {
         return false;
     }
 
+    public boolean changeMember(Member mem) {
+        try {
+
+        }
+        catch (Exception e) {
+            System.out.println("Error4.");
+        }
+        return true;
+    }
+
     public boolean deleteMember(Member mem) {
 
         try {
@@ -54,7 +64,6 @@ public class MemberHandling {
     }
 
     public String ensureUniqueID(Member mem, String s) {
-
         try {
             ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
             for (Member m : memArr) {
@@ -76,6 +85,4 @@ public class MemberHandling {
         }
         return s;
     }
-
-
 }
