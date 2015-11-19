@@ -23,6 +23,7 @@ public class MemberHandling {
                     String.valueOf(newMember.getMemberLastName().charAt(0)) +
                     Integer.toString(randInt.nextInt(900) + 100);
             newMember.setMemberID(ensureUniqueID(newMember, temp));
+            SQLDUMMY.saveMember(newMember);
             return true;
         }
         catch (Exception e) {

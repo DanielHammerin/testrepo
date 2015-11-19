@@ -25,22 +25,10 @@ public class TestMemberHandling extends TestCase{
         assertTrue(memhandling.addMember(n1, n2));
     }
 
-    @Test
-    public void testEnsureUniqueID() throws Exception {
-        Member tempMem = new Member();
-        tempMem.setMemberFirstName("Adam");
-        tempMem.setMemberLastName("Eden");
 
-        String tempMemID = "AE899";
-        tempMem.setMemberID(tempMemID);
-
-        assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID).charAt(0), 'A');            //Ensure that first char in first name == first char of ID
-        assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID).charAt(1), 'E');            //Ensure that first char in last name == second char of ID
-        assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID).length(), 5);               //Ensure that length of ID is 5 chars long.
-    }
 
     @Test
-    public void testDeleteMember() throws Exception {
+    public void testDeleteMemberReturnsTrue() throws Exception {
 
         Member tempMem = new Member();              //Create new member.
         tempMem.setMemberFirstName("Michael");
@@ -59,5 +47,19 @@ public class TestMemberHandling extends TestCase{
         assertTrue(tempMem.equals(checkMem));            // Make sure they are really equal.
 
         assertEquals(true, memhandling.deleteMember(tempMem));          // Assert deletion of member.
+    }
+
+    @Test
+    public void testEnsureUniqueID() throws Exception {
+        Member tempMem = new Member();
+        tempMem.setMemberFirstName("Adam");
+        tempMem.setMemberLastName("Eden");
+
+        String tempMemID = "AE899";
+        tempMem.setMemberID(tempMemID);
+
+        assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID).charAt(0), 'A');            //Ensure that first char in first name == first char of ID
+        assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID).charAt(1), 'E');            //Ensure that first char in last name == second char of ID
+        assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID).length(), 5);               //Ensure that length of ID is 5 chars long.
     }
 }
