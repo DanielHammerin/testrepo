@@ -43,7 +43,9 @@ public class TestMemberHandling extends TestCase{
         }
         assertTrue(tempMem.equals(checkMem));            // Make sure they are really equal.
 
-        assertTrue(memhandling.changeMember(tempMem));
+        String newfirstname = "Darius";
+        String newlastname = "DunkMaster";
+        assertTrue(memhandling.changeMember(tempMem, newfirstname, newlastname));
 
     }
 

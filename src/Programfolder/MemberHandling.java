@@ -32,14 +32,25 @@ public class MemberHandling {
         return false;
     }
 
-    public boolean changeMember(Member mem) {
+    public boolean changeMember(Member mem, String n1, String n2) {
         try {
-
+            ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
+            for (Member m : memArr) {
+                if (m.equals(mem)) {
+                    m.setMemberFirstName(n1);
+                    m.setMemberLastName(n2);
+                    m.setMemberID(ensureUniqueID(m, m.getMemberID()));
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
         }
         catch (Exception e) {
             System.out.println("Error4.");
         }
-        return true;
+        return false;
     }
 
     public boolean deleteMember(Member mem) {
@@ -67,13 +78,11 @@ public class MemberHandling {
         try {
             ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
             for (Member m : memArr) {
-                if (m.getMemberID().equals(mem.getMemberID())) {
-                    String newID;
-                    newID = String.valueOf(mem.getMemberFirstName().charAt(0)) +
+                if (m.getMemberID().equals(s)) {
+                    s = String.valueOf(mem.getMemberFirstName().charAt(0)) +
                             String.valueOf(mem.getMemberLastName().charAt(0)) +
                             Integer.toString(randInt.nextInt(900) + 100);
-                    mem.setMemberID(newID);
-                    ensureUniqueID(mem, newID);
+                    ensureUniqueID(m, s);
                 }
                 else {
                     return s;
