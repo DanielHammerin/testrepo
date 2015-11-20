@@ -56,5 +56,6 @@ public class TestShipHandling extends TestCase{
         int newShipNGuns = 16;
 
         assertTrue(shipHandling.changeShip(tempShip, newShipName, newShipClass, newShipGunCaliber, newShipLength, newShipNGuns));   //Change the ship fields.
+
     }
 }

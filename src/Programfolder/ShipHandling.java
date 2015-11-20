@@ -23,6 +23,24 @@ public class ShipHandling {
     }
 
     public boolean changeShip(Ship tempShip, String newShipName, String newShipClass, int newShipGunCaliber, int newShipLength, int newShipNGuns) {
-        return true;
+        try {
+            for (Ship s : SQLDUMMY.getAllShips()) {
+                if (s.equals(tempShip)) {
+                    s.setShipName(newShipName);
+                    s.setShipClass(newShipClass);
+                    s.setShipGunCaliber(newShipGunCaliber);
+                    s.setShipLength(newShipLength);
+                    s.setShipNGuns(newShipNGuns);
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Error2.");
+        }
+        return false;
     }
 }
