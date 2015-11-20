@@ -1,5 +1,6 @@
 package Testfolder;
 
+import Programfolder.ShipHandling;
 import junit.framework.TestCase;
 import org.junit.Test;
 
