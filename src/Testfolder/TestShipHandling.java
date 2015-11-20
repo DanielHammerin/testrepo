@@ -6,6 +6,8 @@ import Programfolder.Ship;
 import Programfolder.ShipHandling;
 import junit.framework.TestCase;
 import org.junit.Test;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 /**
  * Created by Daniel on 2015-11-19.
@@ -13,7 +15,7 @@ import org.junit.Test;
 public class TestShipHandling extends TestCase{
 
     ShipHandling shipHandling = new ShipHandling();
-
+    Ship s;
     @Test
     public void testAddShipReturnsTrue() throws Exception {
         Member tempMem = new Member();                  //Owner
@@ -58,4 +60,32 @@ public class TestShipHandling extends TestCase{
         assertTrue(shipHandling.changeShip(tempShip, newShipName, newShipClass, newShipGunCaliber, newShipLength, newShipNGuns));   //Change the ship fields.
 
     }
+
+    @BeforeMethod
+    public void beforeTestDeleteShip() {
+        Member m1 = new Member();
+        m1.setMemberFirstName("Max");
+        m1.setMemberLastName("W0w");
+        m1.setMemberID("MW222");
+        SQLDUMMY.saveMember(m1);
+
+        Member m2 = new Member();
+        m2.setMemberFirstName("Andrew");
+        m2.setMemberLastName("Gower");
+        m2.setMemberID("AG222");
+        SQLDUMMY.saveMember(m2);
+
+        s = new Ship();
+        s.setShipName("qweqwe");
+        s.setShipClass("big");
+        s.setShipGunCaliber(300);
+        s.setShipLength(200);
+        s.setShipNGuns(30);
+        SQLDUMMY.saveShip(s);
+    }
+    @Test
+    public void testDeleteShipReturnsTrue() throws Exception {
+        assertTrue(shipHandling.deleteShip(s));
+    }
+
 }
