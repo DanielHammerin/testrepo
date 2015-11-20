@@ -26,4 +26,12 @@ public class SQLDUMMY {
     public static void saveShip(Ship newShip) {
         shipList.add(newShip);
     }
+
+    public static ArrayList<Ship> getAllShips() {
+        return shipList;
+    }
+
+    public static void deleteShip(Ship s) {
+        shipList.remove(s);
+    }
 }

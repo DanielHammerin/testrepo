@@ -57,10 +57,15 @@ public class MemberHandling {
 
         try {
             ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
-
+            ArrayList<Ship> shipArr = SQLDUMMY.getAllShips();
             for(Member m : memArr) {
                 if (m.equals(mem)) {
                     SQLDUMMY.deleteMember(m);
+                    for (Ship s : shipArr) {
+                        if (s.getOwner().equals(mem)) {
+                            SQLDUMMY.deleteShip(s);
+                        }
+                    }
                     return true;
                 }
                 else {
