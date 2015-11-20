@@ -21,4 +21,8 @@ public class ShipHandling {
         }
         return false;
     }
+
+    public boolean changeShip(Ship tempShip, String newShipName, String newShipClass, int newShipGunCaliber, int newShipLength, int newShipNGuns) {
+        return true;
+    }
 }
