@@ -43,4 +43,8 @@ public class ShipHandling {
         }
         return false;
     }
+
+    public boolean deleteShip(Ship s) {
+        return true;
+    }
 }
