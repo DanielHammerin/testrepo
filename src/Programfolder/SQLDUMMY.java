@@ -7,31 +7,31 @@ import java.util.ArrayList;
  */
 public class SQLDUMMY {
 
-    private static ArrayList<Member> memberList = new ArrayList<>();
-    private static ArrayList<Ship> shipList = new ArrayList<>();
+    private ArrayList<Member> memberList = new ArrayList<>();
+    private ArrayList<Ship> shipList = new ArrayList<>();
 
-    public static ArrayList<Member> getAllMembers() {
+    public ArrayList<Member> getAllMembers() {
         return memberList;
     }
 
-    public static void saveMember(Member m) {
+    public void saveMember(Member m) {
         memberList.add(m);
     }
 
-    public static void deleteMember(Member memIn) {
+    public void deleteMember(Member memIn) {
         memberList.remove(memIn);
     }
 
 
-    public static void saveShip(Ship newShip) {
+    public void saveShip(Ship newShip) {
         shipList.add(newShip);
     }
 
-    public static ArrayList<Ship> getAllShips() {
+    public ArrayList<Ship> getAllShips() {
         return shipList;
     }
 
-    public static void deleteShip(Ship s) {
+    public void deleteShip(Ship s) {
         shipList.remove(s);
     }
 }

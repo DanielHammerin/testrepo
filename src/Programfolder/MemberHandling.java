@@ -9,6 +9,11 @@ import java.util.Random;
 public class MemberHandling {
 
     Random randInt = new Random();
+    SQLDUMMY sql;
+
+    public MemberHandling(SQLDUMMY sqlIn) {
+        sql = sqlIn;
+    }
 
     public boolean addMember(String n1, String n2) {
         try {
@@ -23,7 +28,7 @@ public class MemberHandling {
                     String.valueOf(newMember.getMemberLastName().charAt(0)) +
                     Integer.toString(randInt.nextInt(900) + 100);
             newMember.setMemberID(ensureUniqueID(newMember, temp));
-            SQLDUMMY.saveMember(newMember);
+            sql.saveMember(newMember);
             return true;
         }
         catch (Exception e) {
@@ -34,7 +39,7 @@ public class MemberHandling {
 
     public boolean changeMember(Member mem, String n1, String n2) {
         try {
-            ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
+            ArrayList<Member> memArr = sql.getAllMembers();
             for (Member m : memArr) {
                 if (m.equals(mem)) {
                     m.setMemberFirstName(n1);
@@ -56,14 +61,14 @@ public class MemberHandling {
     public boolean deleteMember(Member mem) {
 
         try {
-            ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
-            ArrayList<Ship> shipArr = SQLDUMMY.getAllShips();
+            ArrayList<Member> memArr = sql.getAllMembers();
+            ArrayList<Ship> shipArr = sql.getAllShips();
             for(Member m : memArr) {
                 if (m.equals(mem)) {
-                    SQLDUMMY.deleteMember(m);
+                    sql.deleteMember(m);
                     for (Ship s : shipArr) {
                         if (s.getOwner().equals(mem)) {
-                            SQLDUMMY.deleteShip(s);
+                            sql.deleteShip(s);
                         }
                     }
                     return true;
@@ -81,7 +86,7 @@ public class MemberHandling {
 
     public String ensureUniqueID(Member mem, String s) {
         try {
-            ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
+            ArrayList<Member> memArr = sql.getAllMembers();
             for (Member m : memArr) {
                 if (m.getMemberID().equals(s)) {
                     s = String.valueOf(mem.getMemberFirstName().charAt(0)) +

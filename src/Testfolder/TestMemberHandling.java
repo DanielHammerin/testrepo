@@ -8,6 +8,7 @@ import junit.framework.TestCase;
 
 import java.util.ArrayList;
 
+import static org.mockito.Mockito.mock;
 
 
 /**
@@ -15,7 +16,8 @@ import java.util.ArrayList;
  */
 public class TestMemberHandling extends TestCase{
 
-    MemberHandling memhandling = new MemberHandling();
+    SQLDUMMY sqldummy = mock(SQLDUMMY.class);
+    MemberHandling memhandling = new MemberHandling(sqldummy);
 
     @Test
     public void testAddMemberReturnsTrue() throws Exception {
@@ -32,10 +34,10 @@ public class TestMemberHandling extends TestCase{
         tempMem.setMemberLastName("McLovin");
         tempMem.setMemberID("SM666");
 
-        SQLDUMMY.saveMember(tempMem);               //Save member to dummy DB.
+        sqldummy.saveMember(tempMem);               //Save member to dummy DB.
 
         Member checkMem = new Member();
-        ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
+        ArrayList<Member> memArr = sqldummy.getAllMembers();
         for (Member m : memArr) {                   // Look through all saved members
             if (m.equals(tempMem)) {                // If match, save to checkMem
                 checkMem = m;
@@ -57,10 +59,10 @@ public class TestMemberHandling extends TestCase{
         tempMem.setMemberLastName("Jordan");
         tempMem.setMemberID("MJ222");
 
-        SQLDUMMY.saveMember(tempMem);               //Save the new member in dummy DB
+        sqldummy.saveMember(tempMem);               //Save the new member in dummy DB
 
         Member checkMem = new Member();
-        ArrayList<Member> memArr = SQLDUMMY.getAllMembers();
+        ArrayList<Member> memArr = sqldummy.getAllMembers();
         for (Member m : memArr) {                   // Look through all saved members
             if (m.equals(tempMem)) {                // If match, save to checkMem
                 checkMem = m;

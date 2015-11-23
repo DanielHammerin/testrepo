@@ -4,6 +4,13 @@ package Programfolder;
  * Created by Daniel on 2015-11-20.
  */
 public class ShipHandling {
+
+    private SQLDUMMY sql;
+
+    public ShipHandling(SQLDUMMY sqlIn) {
+        sql = sqlIn;
+    }
+
     public boolean addShip(Member member, String shipName, String shipClass, int shipGunCaliber, int shipLength, int shipNGuns) {
         try {
             Ship newShip = new Ship();
@@ -13,7 +20,7 @@ public class ShipHandling {
             newShip.setShipGunCaliber(shipGunCaliber);
             newShip.setShipNGuns(shipNGuns);
             newShip.setShipLength(shipLength);
-            SQLDUMMY.saveShip(newShip);
+            sql.saveShip(newShip);
             return true;
         }
         catch (Exception e) {
@@ -24,7 +31,7 @@ public class ShipHandling {
 
     public boolean changeShip(Ship tempShip, String newShipName, String newShipClass, int newShipGunCaliber, int newShipLength, int newShipNGuns) {
         try {
-            for (Ship s : SQLDUMMY.getAllShips()) {
+            for (Ship s : sql.getAllShips()) {
                 if (s.equals(tempShip)) {
                     s.setShipName(newShipName);
                     s.setShipClass(newShipClass);
@@ -45,6 +52,20 @@ public class ShipHandling {
     }
 
     public boolean deleteShip(Ship s) {
-        return true;
+        try {
+            for (Ship ship : sql.getAllShips()) {
+                if (ship.equals(s)) {
+                    sql.deleteShip(ship);
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+        catch (Exception e) {
+            System.out.println("Error3.");
+        }
+        return false;
     }
 }
