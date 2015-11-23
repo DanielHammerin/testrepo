@@ -69,13 +69,13 @@ public class TestMemberHandling {
 
     @Test
     public void testDeleteMemberReturnsTrue() throws Exception {
+        when(sqldummy.getAllMembers()).thenReturn(mockedMemberList);
 
         Member tempMem = new Member();              //Create new member.
         tempMem.setMemberFirstName("Michael");
         tempMem.setMemberLastName("Jordan");
         tempMem.setMemberID("MJ222");
-
-        sqldummy.saveMember(tempMem);               //Save the new member in dummy DB
+        mockedMemberList.add(tempMem);
 
         Member checkMem = new Member();
         ArrayList<Member> memArr = sqldummy.getAllMembers();
