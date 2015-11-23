@@ -82,7 +82,8 @@ public class TestShipHandling {
 
     @Test
     public void testChangeShipReturnsTrue() throws Exception {
-
+        when(sqldummy.getAllMembers()).thenReturn(mockedMemberList);
+        when(sqldummy.getAllShips()).thenReturn(mockedShipList);
 
         Member tempMem = new Member();              //Temp owner
         tempMem.setMemberFirstName("Maximum");
