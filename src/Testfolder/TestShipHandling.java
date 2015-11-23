@@ -4,7 +4,6 @@ import Programfolder.Member;
 import Programfolder.SQLDUMMY;
 import Programfolder.Ship;
 import Programfolder.ShipHandling;
-import junit.framework.TestCase;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -114,6 +113,8 @@ public class TestShipHandling {
 
     @Test
     public void testDeleteShipReturnsTrue() throws Exception {
+        when(sqldummy.getAllShips()).thenReturn(mockedShipList);
+
         Ship s = sqldummy.getAllShips().get(0);
         assertTrue(shipHandling.deleteShip(s));
     }
