@@ -3,21 +3,36 @@ package Testfolder;
 import Programfolder.Member;
 import Programfolder.MemberHandling;
 import Programfolder.SQLDUMMY;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 
 /**
  * Created by Daniel on 2015-11-11.
  */
-public class TestMemberHandling extends TestCase{
+public class TestMemberHandling {
 
-    SQLDUMMY sqldummy = mock(SQLDUMMY.class);
-    MemberHandling memhandling = new MemberHandling(sqldummy);
+    private MemberHandling memhandling;
+    private SQLDUMMY sqldummy;
+    private ArrayList<Member> mockedMemberList;
+
+    @Before
+    public void setUp() {
+        sqldummy = mock(SQLDUMMY.class);
+        memhandling = new MemberHandling(sqldummy);
+        mockedMemberList = new ArrayList<>();
+    }
+
+    @After
+    public void tearDown() {
+        mockedMemberList.clear();
+    }
 
     @Test
     public void testAddMemberReturnsTrue() throws Exception {
@@ -29,12 +44,13 @@ public class TestMemberHandling extends TestCase{
 
     @Test
     public void testChangeMemberReturnsTrue() throws Exception {
+        when(sqldummy.getAllMembers()).thenReturn(mockedMemberList);
+
         Member tempMem = new Member();
         tempMem.setMemberFirstName("Swagrid");
         tempMem.setMemberLastName("McLovin");
         tempMem.setMemberID("SM666");
-
-        sqldummy.saveMember(tempMem);               //Save member to dummy DB.
+        mockedMemberList.add(tempMem);
 
         Member checkMem = new Member();
         ArrayList<Member> memArr = sqldummy.getAllMembers();
@@ -78,8 +94,8 @@ public class TestMemberHandling extends TestCase{
         Member tempMem = new Member();
         tempMem.setMemberFirstName("Adam");
         tempMem.setMemberLastName("Eden");
-
         String tempMemID = "AE899";
+
         tempMem.setMemberID(tempMemID);
 
         assertEquals(memhandling.ensureUniqueID(tempMem, tempMemID).charAt(0), 'A');            //Ensure that first char in first name == first char of ID
