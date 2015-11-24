@@ -36,29 +36,7 @@ public class Controller {
                 addNewCaptain();
             }
             else if (cmd.equals(AddNewShip)) {
-                view.displayPrintMessages("entercaptainid");
-                String memID = view.getInput();
-                Member mem = new Member();
-                for (Member m : sql.getAllMembers()) {
-                    if (m.getMemberID().equals(memID)) {
-                        mem = m;
-                    }
-                    else {
-                        view.displayPrintMessages("nocushcaptain");
-                    }
-                }
-                view.displayPrintMessages("entershipname");
-                String shipName = view.getInput();
-                view.displayPrintMessages("entershipclass");
-                String shipClass = view.getInput();
-                view.displayPrintMessages("enterguncaliber");
-                int shipGunCaliber = Integer.parseInt(view.getInput());
-                view.displayPrintMessages("enternguns");
-                int shipnguns = Integer.parseInt(view.getInput());
-                view.displayPrintMessages("entershiplength");
-                int shiplength = Integer.parseInt(view.getInput());
-
-                shipHandler.addShip(mem, shipName, shipClass, shipGunCaliber, shipnguns, shiplength);
+                addNewShip();
             }
             else if (cmd.equals(ChangeCaptain)) {
                 view.displayPrintMessages("entercaptainid");
@@ -151,6 +129,34 @@ public class Controller {
     }
 
     public boolean addNewShip() {
-        return true;
+        boolean check = false;
+        try {
+            view.displayPrintMessages("entercaptainid");
+            String memID = view.getInput();
+            Member mem = new Member();
+            for (Member m : sql.getAllMembers()) {
+                if (m.getMemberID().equals(memID)) {
+                    mem = m;
+                } else {
+                    view.displayPrintMessages("nocushcaptain");
+                }
+            }
+            view.displayPrintMessages("entershipname");
+            String shipName = view.getInput();
+            view.displayPrintMessages("entershipclass");
+            String shipClass = view.getInput();
+            view.displayPrintMessages("enterguncaliber");
+            int shipGunCaliber = Integer.parseInt(view.getInput());
+            view.displayPrintMessages("enternguns");
+            int shipnguns = Integer.parseInt(view.getInput());
+            view.displayPrintMessages("entershiplength");
+            int shiplength = Integer.parseInt(view.getInput());
+
+            shipHandler.addShip(mem, shipName, shipClass, shipGunCaliber, shipnguns, shiplength);
+            check = true;
+        }
+        catch (Exception e) {
+        }
+        return check;
     }
 }
