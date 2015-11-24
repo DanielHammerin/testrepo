@@ -43,4 +43,12 @@ public class TestView {
 
         assertEquals(expected, res);
     }
+
+    @Test
+    public void testDisplayPrintMessages() {
+        String message = "StringForCorrectSystemOutPrint";
+
+        view.displayPrintMessages(message);
+        verify(view, Mockito.times(1)).displayPrintMessages();
+    }
 }

@@ -22,6 +22,6 @@ public class View {
     public String getInput() {
         Scanner sc = new Scanner(System.in);
         String entry = sc.nextLine();
-        return entry;
+        return entry.toLowerCase();
     }
 }
