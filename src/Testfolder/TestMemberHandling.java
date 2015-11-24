@@ -1,8 +1,8 @@
 package Testfolder;
 
-import Programfolder.Member;
-import Programfolder.MemberHandling;
-import Programfolder.SQLDUMMY;
+import Programfolder.Model.Member;
+import Programfolder.Model.MemberHandling;
+import Programfolder.Model.SQLDUMMY;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

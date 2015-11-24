@@ -1,4 +1,6 @@
-package Programfolder;
+package Programfolder.Model;
+
+import Programfolder.Model.Member;
 
 /**
  * Created by Daniel on 2015-11-20.

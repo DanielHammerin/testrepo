@@ -1,4 +1,4 @@
-package Programfolder;
+package Programfolder.Model;
 
 /**
  * Created by Daniel on 2015-11-20.

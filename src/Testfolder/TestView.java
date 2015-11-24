@@ -1,6 +1,6 @@
 package Testfolder;
 
-import Programfolder.View;
+import Programfolder.View.View;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +24,16 @@ public class TestView {
     public void tearDown() {
 
     }
+    /*
+     * Test for main method to enter the program.
+     */
+    @Test
+    public void testMain() {
+        Main m = mock(Main.class);
+        m.main();
+        verify(m, Mockito.times(1)).main();
+    }
+
     @Test
     public void testDisplayHeader() {
         view.displayheader();

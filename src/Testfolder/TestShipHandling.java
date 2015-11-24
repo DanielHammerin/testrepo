@@ -1,9 +1,9 @@
 package Testfolder;
 
-import Programfolder.Member;
-import Programfolder.SQLDUMMY;
-import Programfolder.Ship;
-import Programfolder.ShipHandling;
+import Programfolder.Model.Member;
+import Programfolder.Model.SQLDUMMY;
+import Programfolder.Model.Ship;
+import Programfolder.Model.ShipHandling;
 import org.junit.*;
 import static org.junit.Assert.*;
 

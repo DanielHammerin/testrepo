@@ -1,4 +1,7 @@
-package Programfolder;
+package Programfolder.Model;
+
+import Programfolder.Model.Member;
+import Programfolder.Model.Ship;
 
 import java.util.ArrayList;
 

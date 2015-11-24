@@ -1,4 +1,4 @@
-package Programfolder;
+package Programfolder.Model;
 
 import java.util.ArrayList;
 import java.util.Random;
