@@ -149,4 +149,8 @@ public class Controller {
         }
         return check;
     }
+
+    public boolean addNewShip() {
+        return true;
+    }
 }
