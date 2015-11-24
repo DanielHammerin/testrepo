@@ -38,5 +38,39 @@ public class View {
         else if (m.equals("enterlastname")) {
             System.out.println("Please enter the new captain's last name.");
         }
+        else if (m.equals("entercaptainid")) {
+            System.out.println("Please enter the ID of the captain you wish to access.");
+        }
+        else if (m.equals("nosuchcaptain")) {
+            System.out.println("There is no captain with that ID.");
+        }
+        else if (m.equals("entershipname")) {
+            System.out.println("Please enter the new ship's name.");
+        }
+        else if (m.equals("entershipclass")) {
+            System.out.println("Please enter the new ship's class.");
+        }
+        else if (m.equals("enterguncaliber")) {
+            System.out.println("Please enter the new ship's gun caliber.");
+        }
+        else if (m.equals("enternguns")) {
+            System.out.println("Please enter the new ship's number of guns.");
+        }
+        else if (m.equals("entershiplength")) {
+            System.out.println("Please enter the new ship's length.");
+        }
+        else if (m.equals("shipaccess")) {
+            System.out.println("Please enter the name of the ship you wish to access.");
+        }
+        else if (m.equals("")) {
+
+        }
+        else if (m.equals("")) {
+
+        }
+        else if (m.equals("")) {
+
+        }
+
     }
 }

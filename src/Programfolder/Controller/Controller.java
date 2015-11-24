@@ -1,8 +1,6 @@
 package Programfolder.Controller;
 
-import Programfolder.Model.MemberHandling;
-import Programfolder.Model.SQLDUMMY;
-import Programfolder.Model.ShipHandling;
+import Programfolder.Model.*;
 import Programfolder.View.View;
 
 /**
@@ -35,39 +33,108 @@ public class Controller {
             String cmd = view.getInput();
 
             if (cmd.equals(AddNewCaptain)) {
-                view.displayPrintMessages("enterfirstname");
-                String n1 = view.getInput();
-                view.displayPrintMessages("enterlastname");
-                String n2 = view.getInput();
-
-                memHandler.addMember(n1, n2);
+                addNewCaptain();
             }
             else if (cmd.equals(AddNewShip)) {
+                view.displayPrintMessages("entercaptainid");
+                String memID = view.getInput();
+                Member mem = new Member();
+                for (Member m : sql.getAllMembers()) {
+                    if (m.getMemberID().equals(memID)) {
+                        mem = m;
+                    }
+                    else {
+                        view.displayPrintMessages("nocushcaptain");
+                    }
+                }
+                view.displayPrintMessages("entershipname");
+                String shipName = view.getInput();
+                view.displayPrintMessages("entershipclass");
+                String shipClass = view.getInput();
+                view.displayPrintMessages("enterguncaliber");
+                int shipGunCaliber = Integer.parseInt(view.getInput());
+                view.displayPrintMessages("enternguns");
+                int shipnguns = Integer.parseInt(view.getInput());
+                view.displayPrintMessages("entershiplength");
+                int shiplength = Integer.parseInt(view.getInput());
 
+                shipHandler.addShip(mem, shipName, shipClass, shipGunCaliber, shipnguns, shiplength);
             }
             else if (cmd.equals(ChangeCaptain)) {
+                view.displayPrintMessages("entercaptainid");
+                String memID = view.getInput();
+                Member mem = new Member();
+                for (Member m : sql.getAllMembers()) {
+                    if (m.getMemberID().equals(memID)) {
+                        mem = m;
+                    }
+                    else {
+                        view.displayPrintMessages("nosuchcaptain");
+                    }
+                }
+                view.displayPrintMessages("enternewfirstname");
+                String n1 = view.getInput();
+                view.displayPrintMessages("enternewlastname");
+                String n2 = view.getInput();
 
+                memHandler.changeMember(mem, n1, n2);
             }
             else if (cmd.equals(ChangeShip)) {
+                view.displayPrintMessages("shipaccess");
+                String sn = view.getInput();
+                Ship ship = new Ship();
+                for (Ship s : sql.getAllShips()) {
+                    if (s.getShipName().equals(sn)) {
+                        ship = s;
+                    }
+                }
+                view.displayPrintMessages("entershipname");
+                String shipName = view.getInput();
+                view.displayPrintMessages("entershipclass");
+                String shipClass = view.getInput();
+                view.displayPrintMessages("enterguncaliber");
+                int shipGunCaliber = Integer.parseInt(view.getInput());
+                view.displayPrintMessages("enternguns");
+                int shipnguns = Integer.parseInt(view.getInput());
+                view.displayPrintMessages("entershiplength");
+                int shiplength = Integer.parseInt(view.getInput());
 
+                shipHandler.changeShip(ship, shipName, shipClass, shipGunCaliber, shiplength, shipnguns);
             }
             else if (cmd.equals(DeleteCaptain)) {
-
+                view.displayPrintMessages("entercaptainid");
+                String memID = view.getInput();
+                Member mem = new Member();
+                for (Member m : sql.getAllMembers()) {
+                    if (m.getMemberID().equals(memID)) {
+                        mem = m;
+                    }
+                    else {
+                        view.displayPrintMessages("nocushcaptain");
+                    }
+                }
+                memHandler.deleteMember(mem);
             }
             else if (cmd.equals(DeleteShip)) {
-
+                view.displayPrintMessages("shipaccess");
+                String sn = view.getInput();
+                Ship ship = new Ship();
+                for (Ship s : sql.getAllShips()) {
+                    if (s.getShipName().equals(sn)) {
+                        ship = s;
+                    }
+                }
+                shipHandler.deleteShip(ship);
             }
             else if (cmd.equals(exit)) {
                 return false;
             }
             else {
                 view.displayPrintMessages("invalid");
-
             }
         }
     }
-
-    public void addNewCaptain() {
-
+    public boolean addNewCaptain() {
+        return true;
     }
 }
