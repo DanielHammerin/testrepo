@@ -135,6 +135,6 @@ public class Controller {
         }
     }
     public boolean addNewCaptain() {
-
+        return true;
     }
 }
