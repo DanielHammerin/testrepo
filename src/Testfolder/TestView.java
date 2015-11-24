@@ -1,5 +1,6 @@
 package Testfolder;
 
+import Programfolder.View;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class TestView {
 
     @Before
     public void setUp() {
-        view = new View();
+        view = mock(View.class);
     }
 
     @After
@@ -25,6 +26,7 @@ public class TestView {
     }
     @Test
     public void testDisplayHeader() {
+        view.displayheader();
         verify(view, Mockito.times(1)).displayheader();
     }
 }
