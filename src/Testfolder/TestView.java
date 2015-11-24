@@ -49,6 +49,6 @@ public class TestView {
         String message = "StringForCorrectSystemOutPrint";
 
         view.displayPrintMessages(message);
-        verify(view, Mockito.times(1)).displayPrintMessages();
+        verify(view, Mockito.times(1)).displayPrintMessages(message);
     }
 }

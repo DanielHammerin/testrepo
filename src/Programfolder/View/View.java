@@ -24,4 +24,10 @@ public class View {
         String entry = sc.nextLine();
         return entry.toLowerCase();
     }
+    /*
+     * Method for printing out messages in the controller.
+     */
+    public void displayPrintMessages(String message) {
+
+    }
 }
