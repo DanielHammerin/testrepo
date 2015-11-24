@@ -135,6 +135,18 @@ public class Controller {
         }
     }
     public boolean addNewCaptain() {
-        return true;
+        boolean check = false;
+        try {
+            view.displayPrintMessages("enterfirstname");
+            String n1 = view.getInput();
+            view.displayPrintMessages("enterlastname");
+            String n2 = view.getInput();
+
+            memHandler.addMember(n1, n2);
+            check = true;
+        }
+        catch (Exception e) {
+        }
+        return check;
     }
 }
