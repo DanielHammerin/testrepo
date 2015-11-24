@@ -3,6 +3,7 @@ package Testfolder;
 import Programfolder.Main;
 import Programfolder.View.View;
 import org.junit.After;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -30,5 +31,16 @@ public class TestView {
     public void testDisplayHeader() {
         view.displayheader();
         verify(view, Mockito.times(1)).displayheader();
+    }
+
+    @Test
+    public void testGetInput() {
+        String expected = "Return String Works.";
+        when(view.getInput()).thenReturn(expected);
+
+        String res = view.getInput();
+        verify(view, Mockito.times(1)).getInput();
+
+        assertEquals(expected, res);
     }
 }
