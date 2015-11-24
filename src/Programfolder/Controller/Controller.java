@@ -1,6 +1,8 @@
 package Programfolder.Controller;
 
+import Programfolder.Model.MemberHandling;
 import Programfolder.Model.SQLDUMMY;
+import Programfolder.Model.ShipHandling;
 import Programfolder.View.View;
 
 /**
@@ -17,10 +19,14 @@ public class Controller {
 
     private SQLDUMMY sql;
     private View view;
+    private MemberHandling memHandler;
+    private ShipHandling shipHandler;
 
-    public Controller(SQLDUMMY sqlIn, View v) {
+    public Controller(SQLDUMMY sqlIn, View v, MemberHandling mh, ShipHandling sh) {
         sql = sqlIn;
         view = v;
+        memHandler = mh;
+        shipHandler = sh;
     }
 
     public boolean commandControll() {
@@ -29,7 +35,12 @@ public class Controller {
             String cmd = view.getInput();
 
             if (cmd.equals(AddNewCaptain)) {
+                view.displayPrintMessages("enterfirstname");
+                String n1 = view.getInput();
+                view.displayPrintMessages("enterlastname");
+                String n2 = view.getInput();
 
+                memHandler.addMember(n1, n2);
             }
             else if (cmd.equals(AddNewShip)) {
 
@@ -54,5 +65,9 @@ public class Controller {
 
             }
         }
+    }
+
+    public void addNewCaptain() {
+
     }
 }

@@ -1,7 +1,9 @@
 package Programfolder;
 
 import Programfolder.Controller.Controller;
+import Programfolder.Model.MemberHandling;
 import Programfolder.Model.SQLDUMMY;
+import Programfolder.Model.ShipHandling;
 import Programfolder.View.View;
 
 /**
@@ -12,7 +14,9 @@ public class Main {
 
         SQLDUMMY sql = new SQLDUMMY();
         View v = new View();
-        Controller ctrl = new Controller(sql, v);
+        MemberHandling mh = new MemberHandling(sql);
+        ShipHandling sh = new ShipHandling(sql);
+        Controller ctrl = new Controller(sql, v, mh, sh);
 
         while (ctrl.commandControll());
     }

@@ -32,5 +32,11 @@ public class View {
         if (m.equals("invalid")) {
             System.out.println("Invalid input.");
         }
+        else if (m.equals("enterfirstname")) {
+            System.out.println("Please enter the new captain's first name.");
+        }
+        else if (m.equals("enterlastname")) {
+            System.out.println("Please enter the new captain's last name.");
+        }
     }
 }

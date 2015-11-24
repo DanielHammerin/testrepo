@@ -31,20 +31,4 @@ public class TestController {
         ctrl.commandControll();
         verify(ctrl, Mockito.times(1)).commandControll();
     }
-
-    @Test
-    public void testAddNewCaptain() {
-        String n1 = "Mac";
-        String n2 = "McGuyver";
-
-        when(ctrl.addNewCaptain().addMember(n1, n2)).thenReturn(true);
-
-        ctrl.addNewCaptain(n1, n2);
-        verify(ctrl, times(1)).commandControll();
-
-        boolean check = ctrl.addNewCaptain().addMember(n1, n2);
-        verify(ctrl, times(1)).addMember(n1, n2);
-
-        assertTrue(check);
-    }
 }
