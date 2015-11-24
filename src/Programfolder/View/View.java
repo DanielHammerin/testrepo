@@ -14,4 +14,8 @@ public class View {
         System.out.println("Press 'DC' to delete a captain.");
         System.out.println("Press 'DS' to delete a ship.");
     }
+
+    public String getInput() {
+        return null;
+    }
 }
