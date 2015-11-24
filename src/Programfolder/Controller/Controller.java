@@ -22,6 +22,7 @@ public class Controller {
         sql = sqlIn;
         view = v;
     }
+
     public boolean commandControll() {
         while (true) {
             view.displayheader();
@@ -49,6 +50,7 @@ public class Controller {
                 return false;
             }
             else {
+                view.displayPrintMessages("invalid");
 
             }
         }

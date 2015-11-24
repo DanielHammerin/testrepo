@@ -24,10 +24,13 @@ public class View {
         String entry = sc.nextLine();
         return entry.toLowerCase();
     }
-    /*
-     * Method for printing out messages in the controller.
-     */
-    public void displayPrintMessages(String message) {
 
+    /*
+     * Method for printing out messages from the controller.
+     */
+    public void displayPrintMessages(String m) {
+        if (m.equals("invalid")) {
+            System.out.println("Invalid input.");
+        }
     }
 }
