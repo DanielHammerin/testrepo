@@ -1,6 +1,7 @@
 package Testfolder;
 
 import Programfolder.Controller.Controller;
+import Programfolder.Model.Member;
 import Programfolder.Model.MemberHandling;
 import Programfolder.Model.SQLDUMMY;
 import Programfolder.Model.ShipHandling;
@@ -47,6 +48,19 @@ public class TestController {
     @Test
     public void testAddNewCaptain() {
         when(v.getInput()).thenReturn("Mac", "Macsson");
-        assertEquals(true, ctrl.addNewCaptain());
+        assertTrue(ctrl.addNewCaptain());
+    }
+
+    @Test
+    public void testAddNewShip() {
+        String memID = "MB666";
+        String sn = "Name";
+        String sc = "Class";
+        String gc = "100";
+        String sl = "500";
+        String ng = "30";
+        when(v.getInput()).thenReturn(memID, sn, sc, gc, sl, ng);
+
+        assertTrue(ctrl.addNewShip());
     }
 }
