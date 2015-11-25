@@ -171,4 +171,8 @@ public class Controller {
         }
         return check;
     }
+
+    public boolean changeCaptain() {
+        return true;
+    }
 }
