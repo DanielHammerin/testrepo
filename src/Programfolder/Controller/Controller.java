@@ -33,10 +33,22 @@ public class Controller {
             String cmd = view.getInput();
 
             if (cmd.equals(AddNewCaptain)) {
-                addNewCaptain();
+                boolean b = addNewCaptain();
+                if (b == true) {
+                    view.displayPrintMessages("cptaddcnfrm");
+                }
+                else {
+                    view.displayPrintMessages("cptaddfail");
+                }
             }
             else if (cmd.equals(AddNewShip)) {
-                addNewShip();
+                boolean b = addNewShip();
+                if (b ==true) {
+                    view.displayPrintMessages("shipaddcnfrm");
+                }
+                else {
+                    view.displayPrintMessages("shipaddfail");
+                }
             }
             else if (cmd.equals(ChangeCaptain)) {
                 view.displayPrintMessages("entercaptainid");

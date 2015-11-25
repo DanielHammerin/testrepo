@@ -62,6 +62,27 @@ public class View {
         else if (m.equals("shipaccess")) {
             System.out.println("Please enter the name of the ship you wish to access.");
         }
+        else if (m.equals("cptaddcnfrm")) {
+            System.out.println("Captain added successfully!");
+        }
+        else if (m.equals("cptaddfail")) {
+            System.out.println("Something went wrong, new Captain not added.");
+        }
+        else if (m.equals("shipaddcnfrm")) {
+            System.out.println("Ship added successfully!");
+        }
+        else if (m.equals("shipaddfail")) {
+            System.out.println("Something went wrong, new Ship not added");
+        }
+        else if (m.equals("")) {
+
+        }
+        else if (m.equals("")) {
+
+        }
+        else if (m.equals("")) {
+
+        }
         else if (m.equals("")) {
 
         }

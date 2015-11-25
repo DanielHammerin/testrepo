@@ -63,4 +63,10 @@ public class TestController {
 
         assertTrue(ctrl.addNewShip());
     }
+
+    @Test
+    public void testChangeCaptain() {
+        when(v.getInput()).thenReturn("MM666", "Farad", "Farahsson");
+        assertTrue(ctrl.changeCaptain());
+    }
 }
