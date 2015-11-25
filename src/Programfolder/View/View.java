@@ -86,8 +86,8 @@ public class View {
         else if (m.equals("shipchangedfail")) {
             System.out.println("Something went wrong, Ship data not changed.");
         }
-        else if (m.equals("")) {
-
+        else if (m.equals("nosuchship")) {
+            System.out.println("There is no ship with that name.");
         }
         else if (m.equals("")) {
 

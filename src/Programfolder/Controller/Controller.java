@@ -80,6 +80,9 @@ public class Controller {
                     if (s.getShipName().equals(sn)) {
                         ship = s;
                     }
+                    else {
+                        view.displayPrintMessages("nosuchship");
+                    }
                 }
                 shipHandler.deleteShip(ship);
             }

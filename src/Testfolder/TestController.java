@@ -81,4 +81,10 @@ public class TestController {
         when(v.getInput()).thenReturn("MM888");
         assertTrue(ctrl.deleteCaptain());
     }
+
+    @Test
+    public void testDeleteShip() {
+        when(v.getInput()).thenReturn("Victorium");
+        assertTrue(ctrl.deleteShip());
+    }
 }
