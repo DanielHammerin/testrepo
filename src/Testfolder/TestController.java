@@ -75,4 +75,10 @@ public class TestController {
         when(v.getInput()).thenReturn("Name", "NewName", "NewClass", "200", "250", "60");
         assertTrue(ctrl.changeShip());
     }
+
+    @Test
+    public void testDeleteCaptain() {
+        when(v.getInput()).thenReturn("MM888");
+        assertTrue(ctrl.deleteCaptain());
+    }
 }
