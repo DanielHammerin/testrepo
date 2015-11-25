@@ -70,21 +70,21 @@ public class Controller {
             }
             else if (cmd.equals(DeleteCaptain)) {
                 boolean b = deleteCaptain();
-
+                if (b == true) {
+                    view.displayPrintMessages("deletecaptain");
+                }
+                else {
+                    view.displayPrintMessages("deletecaptainfail");
+                }
             }
             else if (cmd.equals(DeleteShip)) {
-                view.displayPrintMessages("shipaccess");
-                String sn = view.getInput();
-                Ship ship = new Ship();
-                for (Ship s : sql.getAllShips()) {
-                    if (s.getShipName().equals(sn)) {
-                        ship = s;
-                    }
-                    else {
-                        view.displayPrintMessages("nosuchship");
-                    }
+                boolean b = deleteShip();
+                if (b == true) {
+                    view.displayPrintMessages("shipdeleted");
                 }
-                shipHandler.deleteShip(ship);
+                else {
+                    view.displayPrintMessages("shipdeletedfail");
+                }
             }
             else if (cmd.equals(exit)) {
                 return false;
@@ -222,6 +222,24 @@ public class Controller {
     }
 
     public boolean deleteShip() {
-        return true;
+        boolean b = false;
+        try {
+            view.displayPrintMessages("shipaccess");
+            String sn = view.getInput();
+            Ship ship = new Ship();
+            for (Ship s : sql.getAllShips()) {
+                if (s.getShipName().equals(sn)) {
+                    ship = s;
+                }
+                else {
+                    view.displayPrintMessages("nosuchship");
+                }
+            }
+            shipHandler.deleteShip(ship);
+            b = true;
+        }
+        catch (Exception e) {
+        }
+        return b;
     }
 }

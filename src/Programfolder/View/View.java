@@ -89,6 +89,18 @@ public class View {
         else if (m.equals("nosuchship")) {
             System.out.println("There is no ship with that name.");
         }
+        else if (m.equals("shipdeleted")) {
+            System.out.println("Ship deleted successfully!");
+        }
+        else if (m.equals("shipdeletedfail")) {
+            System.out.println("Something went wrong, ship not deleted.");
+        }
+        else if (m.equals("deletecaptain")) {
+            System.out.println("Captain deleted!");
+        }
+        else if (m.equals("deletecaptainfail")) {
+            System.out.println("Something went wrong, Captain not deleted.");
+        }
         else if (m.equals("")) {
 
         }
