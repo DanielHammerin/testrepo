@@ -51,23 +51,13 @@ public class Controller {
                 }
             }
             else if (cmd.equals(ChangeCaptain)) {
-                view.displayPrintMessages("entercaptainid");
-                String memID = view.getInput();
-                Member mem = new Member();
-                for (Member m : sql.getAllMembers()) {
-                    if (m.getMemberID().equals(memID)) {
-                        mem = m;
-                    }
-                    else {
-                        view.displayPrintMessages("nosuchcaptain");
-                    }
+                boolean b = changeCaptain();
+                if (b == true) {
+                    view.displayPrintMessages("captainchanged");
                 }
-                view.displayPrintMessages("enternewfirstname");
-                String n1 = view.getInput();
-                view.displayPrintMessages("enternewlastname");
-                String n2 = view.getInput();
-
-                memHandler.changeMember(mem, n1, n2);
+                else {
+                    view.displayPrintMessages("captainchangefail");
+                }
             }
             else if (cmd.equals(ChangeShip)) {
                 view.displayPrintMessages("shipaccess");
@@ -173,6 +163,28 @@ public class Controller {
     }
 
     public boolean changeCaptain() {
-        return true;
+        boolean b = false;
+        try {
+            view.displayPrintMessages("entercaptainid");
+            String memID = view.getInput();
+            Member mem = new Member();
+            for (Member m : sql.getAllMembers()) {
+                if (m.getMemberID().equals(memID)) {
+                    mem = m;
+                } else {
+                    view.displayPrintMessages("nosuchcaptain");
+                }
+            }
+            view.displayPrintMessages("enternewfirstname");
+            String n1 = view.getInput();
+            view.displayPrintMessages("enternewlastname");
+            String n2 = view.getInput();
+
+            memHandler.changeMember(mem, n1, n2);
+            b = true;
+        }
+        catch (Exception e) {
+        }
+        return b;
     }
 }
