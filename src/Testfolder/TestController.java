@@ -69,4 +69,10 @@ public class TestController {
         when(v.getInput()).thenReturn("MM666", "Farad", "Farahsson");
         assertTrue(ctrl.changeCaptain());
     }
+
+    @Test
+    public void testChangeShip() {
+        when(v.getInput()).thenReturn("Name", "NewName", "NewClass", "200", "250", "60");
+        assertTrue(ctrl.changeShip());
+    }
 }
