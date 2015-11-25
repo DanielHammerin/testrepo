@@ -187,4 +187,8 @@ public class Controller {
         }
         return b;
     }
+
+    public boolean changeShip() {
+        return true;
+    }
 }
