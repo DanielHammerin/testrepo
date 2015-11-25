@@ -60,26 +60,13 @@ public class Controller {
                 }
             }
             else if (cmd.equals(ChangeShip)) {
-                view.displayPrintMessages("shipaccess");
-                String sn = view.getInput();
-                Ship ship = new Ship();
-                for (Ship s : sql.getAllShips()) {
-                    if (s.getShipName().equals(sn)) {
-                        ship = s;
-                    }
+                boolean b = changeShip();
+                if (b == true) {
+                    view.displayPrintMessages("shipchanged");
                 }
-                view.displayPrintMessages("entershipname");
-                String shipName = view.getInput();
-                view.displayPrintMessages("entershipclass");
-                String shipClass = view.getInput();
-                view.displayPrintMessages("enterguncaliber");
-                int shipGunCaliber = Integer.parseInt(view.getInput());
-                view.displayPrintMessages("enternguns");
-                int shipnguns = Integer.parseInt(view.getInput());
-                view.displayPrintMessages("entershiplength");
-                int shiplength = Integer.parseInt(view.getInput());
-
-                shipHandler.changeShip(ship, shipName, shipClass, shipGunCaliber, shiplength, shipnguns);
+                else {
+                    view.displayPrintMessages("shipchangedfail");
+                }
             }
             else if (cmd.equals(DeleteCaptain)) {
                 view.displayPrintMessages("entercaptainid");
@@ -189,6 +176,32 @@ public class Controller {
     }
 
     public boolean changeShip() {
-        return true;
+        boolean b = false;
+        try {
+            view.displayPrintMessages("shipaccess");
+            String sn = view.getInput();
+            Ship ship = new Ship();
+            for (Ship s : sql.getAllShips()) {
+                if (s.getShipName().equals(sn)) {
+                    ship = s;
+                }
+            }
+            view.displayPrintMessages("entershipname");
+            String shipName = view.getInput();
+            view.displayPrintMessages("entershipclass");
+            String shipClass = view.getInput();
+            view.displayPrintMessages("enterguncaliber");
+            int shipGunCaliber = Integer.parseInt(view.getInput());
+            view.displayPrintMessages("enternguns");
+            int shipnguns = Integer.parseInt(view.getInput());
+            view.displayPrintMessages("entershiplength");
+            int shiplength = Integer.parseInt(view.getInput());
+
+            shipHandler.changeShip(ship, shipName, shipClass, shipGunCaliber, shiplength, shipnguns);
+            b = true;
+        }
+        catch (Exception e) {
+        }
+        return b;
     }
 }

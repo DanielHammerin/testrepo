@@ -75,16 +75,16 @@ public class View {
             System.out.println("Something went wrong, new Ship not added");
         }
         else if (m.equals("captainchanged")) {
-            System.out.println("Captain data changes successfully.");
+            System.out.println("Captain data changes successfully!");
         }
         else if (m.equals("captainchangefail")) {
             System.out.println("Something went wrong, Captain's data not changed.");
         }
-        else if (m.equals("")) {
-
+        else if (m.equals("shipchanged")) {
+            System.out.println("Ship data changed!");
         }
-        else if (m.equals("")) {
-
+        else if (m.equals("shipchangedfail")) {
+            System.out.println("Something went wrong, Ship data not changed.");
         }
         else if (m.equals("")) {
 
