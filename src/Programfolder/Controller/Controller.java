@@ -69,18 +69,8 @@ public class Controller {
                 }
             }
             else if (cmd.equals(DeleteCaptain)) {
-                view.displayPrintMessages("entercaptainid");
-                String memID = view.getInput();
-                Member mem = new Member();
-                for (Member m : sql.getAllMembers()) {
-                    if (m.getMemberID().equals(memID)) {
-                        mem = m;
-                    }
-                    else {
-                        view.displayPrintMessages("nocushcaptain");
-                    }
-                }
-                memHandler.deleteMember(mem);
+                boolean b = deleteCaptain();
+
             }
             else if (cmd.equals(DeleteShip)) {
                 view.displayPrintMessages("shipaccess");
@@ -206,6 +196,25 @@ public class Controller {
     }
 
     public boolean deleteCaptain() {
-        return true;
+        boolean b = false;
+        try {
+            view.displayPrintMessages("entercaptainid");
+            String memID = view.getInput();
+            Member mem = new Member();
+            for (Member m : sql.getAllMembers()) {
+                if (m.getMemberID().equals(memID)) {
+                    mem = m;
+                }
+                else {
+                    view.displayPrintMessages("nocushcaptain");
+                    return deleteCaptain();
+                }
+            }
+            memHandler.deleteMember(mem);
+            b = true;
+        }
+        catch (Exception e) {
+        }
+        return b;
     }
 }
