@@ -36,7 +36,7 @@ public class TestController {
 
     @After
     public void tearDown() {
-
+        System.out.println("teardown");
     }
 
     @Test
