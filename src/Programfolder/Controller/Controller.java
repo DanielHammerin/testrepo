@@ -220,4 +220,8 @@ public class Controller {
         }
         return b;
     }
+
+    public boolean deleteShip() {
+        return true;
+    }
 }
